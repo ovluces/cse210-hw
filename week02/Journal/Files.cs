@@ -3,6 +3,8 @@ public class Files
 {
   public void SaveToFile(List<Entries> entries, string fileName)
   {
+    fileName = "../../../" + fileName;
+    
     string folder = AppDomain.CurrentDomain.BaseDirectory;
     string filePath = Path.Combine(folder, fileName);
     using (StreamWriter outputFile = new StreamWriter(filePath))
@@ -18,11 +20,12 @@ public class Files
 
   public List<string> LoadFromFile(string fileName)
   {
-    Console.WriteLine($"Loading from: {fileName}");
+
+    fileName = "../../../" + fileName;
 
     string folder = AppDomain.CurrentDomain.BaseDirectory;
     string filePath = Path.Combine(folder, fileName);
-
+    Console.WriteLine($"Loading from: {filePath}");
     List<string> listOfLines = new List<string>();
     string[] lines = System.IO.File.ReadAllLines(filePath);
     foreach (string line in lines)
