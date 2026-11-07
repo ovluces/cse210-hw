@@ -3,7 +3,9 @@ public class Files
 {
   public void SaveToFile(List<Entries> entries, string fileName)
   {
-    using (StreamWriter outputFile = new StreamWriter(fileName))
+    string folder = AppDomain.CurrentDomain.BaseDirectory;
+    string filePath = Path.Combine(folder, fileName);
+    using (StreamWriter outputFile = new StreamWriter(filePath))
     {
       foreach (Entries entry in entries)
       {
@@ -17,8 +19,12 @@ public class Files
   public List<string> LoadFromFile(string fileName)
   {
     Console.WriteLine($"Loading from: {fileName}");
+
+    string folder = AppDomain.CurrentDomain.BaseDirectory;
+    string filePath = Path.Combine(folder, fileName);
+
     List<string> listOfLines = new List<string>();
-    string[] lines = System.IO.File.ReadAllLines(fileName);
+    string[] lines = System.IO.File.ReadAllLines(filePath);
     foreach (string line in lines)
     {
       // Console.WriteLine($"line: {line}");
