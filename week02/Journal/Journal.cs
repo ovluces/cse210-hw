@@ -4,8 +4,16 @@ public class Journal
 
   public void AddEntry(Entries newEntry)
   {
-    _entries.Add(newEntry);
-    Console.WriteLine("added...");
+    if (_entries == null)
+    {
+      Console.WriteLine("null? ");
+    }
+    else
+    {
+      _entries.Add(newEntry);
+      // Console.WriteLine("added... ");
+    }
+
   }
 
   public void DisplayAll()
@@ -17,6 +25,5 @@ public class Journal
     }
     Console.WriteLine(" ");
   }
-
 
 }
