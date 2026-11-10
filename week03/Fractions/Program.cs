@@ -22,5 +22,10 @@ class Program
         fraction5.GetFractionString();
         fraction5.GetDecimalValue();
 
+        //respuesta del cse
+        Fraction f4 = new Fraction(1, 3);
+        Console.WriteLine(f4.GetFractionString2());
+        Console.WriteLine(f4.GetDecimalValue2());
+
     }
 }
