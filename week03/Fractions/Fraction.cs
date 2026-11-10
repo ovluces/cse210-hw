@@ -24,7 +24,7 @@ public class Fraction
         }
         else
         {
-            Console.WriteLine("The bottom can not be 0");
+            Console.WriteLine("The bottom value can not be 0");
         }
 
     }
@@ -48,14 +48,38 @@ public class Fraction
 
     }
 
-    public string GetFractionString()
+    public void GetFractionString()
     {
-
-        return "0";
+        Console.WriteLine($"{_top}/{_bottom}");
     }
 
-    public double GetDecimalValue()
+    //respuesta del cse
+    public string GetFractionString2()
     {
-        return 0;
+        // Notice that this is not stored as a member variable.
+        // Is is just a temporary, local variable that will be recomputed each time this is called.
+        string text = $"{_top}/{_bottom}";
+        return text;
+    }
+
+    public void GetDecimalValue()
+    {
+        if (_bottom != 0)
+        {
+            double decimalValue = (double)_top / (double)_bottom;
+            Console.WriteLine($"{decimalValue}");
+        }
+        else
+        {
+            Console.WriteLine("The bottom value can not be 0");
+        }
+
+    }
+
+    public double GetDecimalValue2()
+    {
+        // Notice that this is not stored as a member variable.
+        // Is will be recomputed each time this is called.
+        return (double)_top / (double)_bottom;
     }
 }

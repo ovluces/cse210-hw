@@ -7,11 +7,20 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Fractions Project.");
         Fraction fraction1 = new Fraction();
-        Console.WriteLine($"Fraction: {fraction1}");
+        fraction1.GetFractionString();
+        fraction1.GetDecimalValue();
         Fraction fraction2 = new Fraction(6);
-        Console.WriteLine($"Fraction: {fraction2}");
+        fraction2.GetFractionString();
+        fraction2.GetDecimalValue();
         Fraction fraction3 = new Fraction(6, 7);
-        Console.WriteLine($"Fraction: {fraction3}");
+        fraction3.GetFractionString();
+        fraction3.GetDecimalValue();
+        Fraction fraction4 = new Fraction(6, 0);
+        fraction4.GetFractionString();
+        fraction4.GetDecimalValue();
+        Fraction fraction5 = new Fraction(1, 3);
+        fraction5.GetFractionString();
+        fraction5.GetDecimalValue();
 
     }
 }
