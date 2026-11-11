@@ -6,25 +6,28 @@ public class Scripture
 
     public Scripture()
     {
-        _reference.Reference();
-        _scriptureText = "";
+        _reference = new();
+        _scriptureText = "text text text";
+
     }
 
-    public void setScripture(string book, int chapter, int verse, string scriptureText)
+    public Scripture(string book, int chapter, int verse, string scriptureText)
     {
-        _reference.SetReference(book, chapter, verse);
+        _reference = new(book, chapter, verse);
         _scriptureText = scriptureText;
     }
 
-    public void setScripture(string book, int chapter, int verse, int finalVerse, string scriptureText)
+    public Scripture(string book, int chapter, int verse, int finalVerse, string scriptureText)
     {
-        _reference.SetReference(book, chapter, verse, finalVerse);
+        _reference = new(book, chapter, verse, finalVerse);
         _scriptureText = scriptureText;
     }
 
-    public void ScriptureDisplay()
+    public string ScriptureDisplay()
     {
+        string scripture = _reference.GetReference(0) + " " + _scriptureText;
 
+        return scripture;
     }
 
 

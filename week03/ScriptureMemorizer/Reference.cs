@@ -7,32 +7,37 @@ public class Reference
 
     public Reference()
     {
-
         _book.Add("Proverbs");
         _chapter.Add(3);
         _verse.Add(5);
         _finalVerse.Add(6);
     }
 
-    public void SetReference(string book, int chapter, int verse)
+    public Reference(string book, int chapter, int verse)
     {
-        _book[0] = book;
-        _chapter[0] = chapter;
-        _verse[0] = verse;
-        _finalVerse[0] = 6;
+        _book.Add(book);
+        _chapter.Add(chapter);
+        _verse.Add(verse);
+        _finalVerse.Add(0);
     }
 
-    public void SetReference(string book, int chapter, int verse, int finalVerse)
+    public Reference(string book, int chapter, int verse, int finalVerse)
     {
-        _book[0] = book;
-        _chapter[0] = chapter;
-        _verse[0] = verse;
-        _finalVerse[0] = finalVerse;
+        _book.Add(book);
+        _chapter.Add(chapter);
+        _verse.Add(verse);
+        _finalVerse.Add(finalVerse);
     }
 
-    public double GetReference(int index)
+    public string GetReference(int index)
     {
-        string fullReference = _book[index] + " " + _chapter[index].ToString + ": " + _verse[index].ToString + " - " + _finalVerse[index].ToString;
+        // string fullReference = index.ToString();
+        string fullReference = _book[index] + " " + _chapter[index].ToString() + ":" + _verse[index].ToString();
+        if (_finalVerse[index] != 0)
+        {
+            fullReference = fullReference + "-" + _finalVerse[index].ToString();
+        }
+
         return fullReference;
     }
 
