@@ -6,11 +6,6 @@ public class Reference
     private int _finalVerse;
 
 
-    // Reference
-
-    //     GetDisplayText() : string
-    //     Possible getters and setters
-
     public Reference()
     {
         _book = "Book";

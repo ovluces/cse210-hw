@@ -1,17 +1,10 @@
-using System.ComponentModel;
-
 public class Scripture
 {
     //Proverbs 3:5
     private Reference _reference = new();
-    private Word _scriptureText = new();
-
-
-    // Scripture
-
-    //     HideRandomWords(numberToHide : int) : void
-    //     GetDisplayText() : string
-    //     IsCompletelyHidden() : bool
+    private List<Word> _scriptureText = new();
+    private List<int> _lastHiddenWords = new();
+    private int _numberToHide = 3; //number of words to hide each Enter press
 
     public Scripture()
     {
@@ -23,7 +16,12 @@ public class Scripture
 
         List<string> listOfScriptures = LoadFromFile(fileName);
 
-        string file = listOfScriptures[2];
+        // obtain the index by randomize
+        int numberOfScriptures = listOfScriptures.Count(); //obtain number of scriptures in list
+        Random randomGenerator = new Random();
+        int randomIndex = randomGenerator.Next(0, numberOfScriptures); //obtain a random index, between 0 and the count of scriptures in list.
+
+        string file = listOfScriptures[randomIndex];
 
         string[] parts = file.Split("¨¨");
         // Console.WriteLine($"{parts[0]}/{parts[1]}/{parts[2]}");
@@ -52,32 +50,75 @@ public class Scripture
         _reference = new(book, chapter, verse, finalVerse);
 
         //parts[2] = scripture text
-        _scriptureText = new(parts[2]);
 
+        foreach (string word in parts[2].Split(' '))
+        {
+            _scriptureText.Add(new Word(word));
+        }
     }
 
-    // public Scripture(string book, int chapter, int verse, string scriptureText)
-    // {
-    //     _reference = new(book, chapter, verse);
-    //     Word _scriptureText = new();
-    // }
-
-    // public Scripture(string book, int chapter, int verse, int finalVerse, string scriptureText)
-    // {
-    //     _reference = new(book, chapter, verse, finalVerse);
-    //     Word _scriptureText = new();
-    // }
 
     public string ScriptureDisplay()
     {
-        string scripture = _reference.GetReference() + ". " + _scriptureText.DisplayText();
-        return scripture;
+        string texto = "";
+        foreach (Word word in _scriptureText)
+        {
+            // Console.Write($"{word}*");
+            texto = texto + " " + word.DisplayWord();
+        }
+        return _reference.GetReference() + ". " + texto;
     }
 
-    // public string GetScriptureText()
-    // {
-    //     return _scriptureText.DisplayText();
-    // }
+    public void HideRandomWords()
+    {
+        int numberOfWords = _scriptureText.Count(); //obtain number of prompts in list
+        _lastHiddenWords.Clear();
+        for (int i = 0; i < _numberToHide; i++)
+        {
+            bool change = true;
+            do //generates random number of word until find a word to change
+            {
+                Random randomGenerator = new Random();
+                int randomIndex = randomGenerator.Next(0, numberOfWords); //obtain a random index, between 0 and the count os prompts in list.
+                change = _scriptureText[randomIndex].HideWord();
+                if (change)
+                {
+                    _lastHiddenWords.Add(randomIndex);
+                    // Console.WriteLine($"{_lastHiddenWords[i]}");
+                }
+                if (IsCompletelyHidden())
+                {
+                    break; //https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/statements/jump-statements
+                }
+            } while (!change); //do until change some value
+        }
+    }
+
+    public void UndoRandomWords()
+    {
+        if (_lastHiddenWords.Count() > 0)
+        // Console.WriteLine(_lastHiddenWords.Count());
+        {
+            for (int i = 0; i < _lastHiddenWords.Count(); i++)
+            {
+                // Console.WriteLine(i);
+                _scriptureText[_lastHiddenWords[i]].ShowWord();
+            }
+        }
+    }
+
+    public bool IsCompletelyHidden()
+    {
+        bool completelyHidden = true;
+        foreach (Word word in _scriptureText)
+        {
+            if (word.GetState())
+            {
+                completelyHidden = false;
+            }
+        }
+        return completelyHidden;
+    }
 
     public List<string> LoadFromFile(string fileName)
     {

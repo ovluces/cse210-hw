@@ -5,8 +5,10 @@ class Program
     static void Main(string[] args)
     {
         // Console.WriteLine("Hello World! This is the ScriptureMemorizer Project.");
-        string respond = "";
+        string respond = ".";
+        int index = 0;
         Console.Clear();
+        Scripture scripture1 = new();
         do
         {
             Console.Clear();
@@ -14,31 +16,33 @@ class Program
             Console.WriteLine("                                            Scripture Memorizer");
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
 
-            // Reference reference1 = new();
-            // Console.WriteLine($"Reference: {reference1.GetReference(0)}");
-
-            // reference1 = new("Libro", 99, 4);
-            // Console.WriteLine($"Reference: {reference1.GetReference(0)}");
-
-            // reference1 = new("Libro2", 199, 4, 6);
-            // Console.WriteLine($"Reference: {reference1.GetReference(0)}");
-
-            Scripture scripture1 = new();
-            Console.WriteLine($"{scripture1.ScriptureDisplay()}");
-
-            // scripture1 = new("libro", 1, 2, "texto de la escritura");
-            // Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
-
-            // scripture1 = new("libro2", 221, 2222, 2233, "texto de la escritura 222");
-            // Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
-
-            // Word word1 = new(scripture1.GetScriptureText());
+            if (respond == "")
+            {
+                scripture1.HideRandomWords();
+                Console.WriteLine($"{scripture1.ScriptureDisplay()}");
+            }
+            else if (respond == "undo")
+            {
+                // Console.WriteLine("Undo Last Words");
+                scripture1.UndoRandomWords();
+                Console.WriteLine($"{scripture1.ScriptureDisplay()}");
+            }
+            else
+            {
+                Console.WriteLine($"{scripture1.ScriptureDisplay()}");
+            }
             Console.WriteLine("");
-            Console.WriteLine("Press <Enter> for hide a few random words in the scripture. Type \"quit\" for exit");
+            Console.WriteLine("Press <Enter> for hide a few random words in the scripture.");
+            Console.WriteLine("Type \"undo\" for undo the last words");
+            Console.WriteLine("Type \"quit\" for finish");
             Console.WriteLine("");
+            // Console.WriteLine(scripture1.IsCompletelyHidden());
             Console.Write("> ");
-            // respond = Console.ReadLine();
-            respond = "quit";
+            respond = Console.ReadLine();
+            if (respond == "" && scripture1.IsCompletelyHidden())
+            {
+                break;
+            }
         } while (respond != "quit");
         Console.Write("Bye!");
     }

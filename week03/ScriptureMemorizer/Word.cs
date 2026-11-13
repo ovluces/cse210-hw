@@ -1,46 +1,69 @@
 public class Word
 {
-    private List<string> _word = new();
-    private List<bool> _state = new();
-
-    // Word
-    // Hide() : void
-    // Show() : void
-    // IsHidden() : bool
-    // GetDisplayText() : string
+    private string _word;
+    private bool _state;
 
     public Word()
     {
-        _word.Add("word");
-        _state.Add(true);
+        _word = "word";
+        _state = true;
     }
     public Word(string text)
     {
-        //split the text in parts, separator: space
-        string[] parts = text.Split(" ");
-        _word.Clear();
-        _state.Clear();
-        foreach (string word in parts)
-        {
-            // Console.WriteLine($"- {word}");
-            _word.Add(word);
-            _state.Add(true);
-        }
+        _word = text;
+        _state = true;
+        // }
     }
 
-    public void WordHiding(int index)
+    public bool HideWord()
     {
-        _state[index] = false;
+        if (_state)
+        {
+            _state = false;
+            return true; //the value was changed
+        }
+        else
+        {
+            return false; //the value already was false
+        }
+
     }
 
-    public string DisplayText()
+    public void ShowWord()
     {
-        string texto = "";
-        foreach (string word in _word)
+        _state = true;
+    }
+
+
+    public bool GetState()
+    {
+        return _state;
+    }
+
+    public string DisplayWord()
+    {
+        string word = "";
+        if (_state)
         {
-            // Console.WriteLine($"- {word}");
-            texto = texto + word + " ";
+            word = _word;
         }
-        return texto;
+        else
+        {
+            // int numberOfLetters = _word.Count();
+            foreach (char letra in _word)
+            {
+                if ((letra == '.') || (letra == ',') || (letra == ';') || (letra == '—') || (letra == ',') || (letra == ':') || (letra == '!')) //omitting this characters for visualization
+                {
+                    word += letra;
+                }
+                else
+                {
+                    word += "_";
+                }
+
+            }
+        }
+
+        return word;
     }
 }
