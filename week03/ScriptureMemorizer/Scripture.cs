@@ -7,7 +7,7 @@ public class Scripture
     public Scripture()
     {
         _reference = new();
-        _scriptureText = "text text text";
+        _scriptureText = "Trust in the Lord with all thine heart; and lean not unto thine own understanding.";
 
     }
 
@@ -28,6 +28,11 @@ public class Scripture
         string scripture = _reference.GetReference(0) + " " + _scriptureText;
 
         return scripture;
+    }
+
+    public string GetScriptureText()
+    {
+        return _scriptureText;
     }
 
 

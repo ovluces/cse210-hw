@@ -25,13 +25,13 @@ class Program
             Scripture scripture1 = new();
             Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
 
-            scripture1 = new("libro", 1, 2, "texto de la escritura");
-            Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
+            // scripture1 = new("libro", 1, 2, "texto de la escritura");
+            // Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
 
-            scripture1 = new("libro2", 221, 2222, 2233, "texto de la escritura 222");
-            Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
+            // scripture1 = new("libro2", 221, 2222, 2233, "texto de la escritura 222");
+            // Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
 
-            Word word1 = new("texto de la escritura 222");
+            Word word1 = new(scripture1.GetScriptureText());
 
 
             Console.Write("> ");
