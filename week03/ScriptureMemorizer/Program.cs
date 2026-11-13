@@ -10,9 +10,9 @@ class Program
         do
         {
             Console.Clear();
-            Console.WriteLine("-----------------------------------------------------------------");
-            Console.WriteLine("                      Scripture Memorizer");
-            Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("                                            Scripture Memorizer");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
 
             // Reference reference1 = new();
             // Console.WriteLine($"Reference: {reference1.GetReference(0)}");
@@ -24,7 +24,7 @@ class Program
             // Console.WriteLine($"Reference: {reference1.GetReference(0)}");
 
             Scripture scripture1 = new();
-            Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
+            Console.WriteLine($"{scripture1.ScriptureDisplay()}");
 
             // scripture1 = new("libro", 1, 2, "texto de la escritura");
             // Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
@@ -33,11 +33,13 @@ class Program
             // Console.WriteLine($"Scripture: {scripture1.ScriptureDisplay()}");
 
             // Word word1 = new(scripture1.GetScriptureText());
-
-
+            Console.WriteLine("");
+            Console.WriteLine("Press <Enter> for hide a few random words in the scripture. Type \"quit\" for exit");
+            Console.WriteLine("");
             Console.Write("> ");
             // respond = Console.ReadLine();
             respond = "quit";
         } while (respond != "quit");
+        Console.Write("Bye!");
     }
 }

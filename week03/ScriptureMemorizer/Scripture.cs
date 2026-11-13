@@ -15,50 +15,44 @@ public class Scripture
 
     public Scripture()
     {
-        // journal1._entries.Clear();
         string fileName = "scriptures.txt";
-        int index = 0;
+        string book = "";
+        int chapter = 0;
+        int verse = 0;
+        int finalVerse = 0;
+
         List<string> listOfScriptures = LoadFromFile(fileName);
-        foreach (string file in listOfScriptures)
+
+        string file = listOfScriptures[2];
+
+        string[] parts = file.Split("¨¨");
+        // Console.WriteLine($"{parts[0]}/{parts[1]}/{parts[2]}");
+        book = parts[0];
+
+        //parts[1] = Reference
+
+        string[] referenceParts = parts[1].Split(":");
+        chapter = int.Parse(referenceParts[0]);
+
+        // Console.WriteLine($"Chapter: {referenceParts[0]}");
+        //search for the "-" symbol, if exists then there are more than 1 verses
+        //code from https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/strings/common-tasks/search
+        if (referenceParts[1].Contains('-'))
         {
-            // Console.WriteLine(file);
-            string[] parts = file.Split("¨¨");
-            // Console.WriteLine($"{parts[0]}/{parts[1]}/{parts[2]}");
-            //parts[0] = book
-            //parts[1] = Refenrence
-            //parts[2] = scripture text
-
-            string[] referenceParts = parts[1].Split(":");
-            //chapter = referenceParts[0];
-            int verse = 0;
-            int finalVerse = 0;
-            // Console.WriteLine($"Chapter: {referenceParts[0]}");
-            //search for the "-" symbol, if exists then there are more than 1 verses
-            if (referenceParts[1].Contains('-'))
-            {
-                // Console.WriteLine($"The reference contains -: {referenceParts[1]}");
-                string[] verseParts = referenceParts[1].Split('-');
-                // verseParts[0] = Initial Verse
-                // verseParts[1] = Final Verse
-                verse = int.Parse(verseParts[0]);
-                finalVerse = int.Parse(verseParts[1]);
-            }
-            else
-            {
-                verse = int.Parse(referenceParts[1]);
-                finalVerse = int.Parse(referenceParts[1]);
-            }
-
-            _reference.AddReference(parts[0], int.Parse(referenceParts[0]), verse, finalVerse);
-            // Console.WriteLine($"Referencia: {_reference.GetReference(index)}");
-
-            _scriptureText = new(parts[2]);
-            // Console.WriteLine($"texto: {_scriptureText.DisplayText()}");
-
-            index++;
+            string[] verseParts = referenceParts[1].Split('-');
+            verse = int.Parse(verseParts[0]);
+            finalVerse = int.Parse(verseParts[1]);
         }
-        // Console.WriteLine("File loaded! ");
-        // Console.WriteLine(" ");
+        else
+        {
+            verse = int.Parse(referenceParts[1]);
+            finalVerse = int.Parse(referenceParts[1]);
+        }
+
+        _reference = new(book, chapter, verse, finalVerse);
+
+        //parts[2] = scripture text
+        _scriptureText = new(parts[2]);
 
     }
 
@@ -76,7 +70,7 @@ public class Scripture
 
     public string ScriptureDisplay()
     {
-        string scripture = _reference.GetReference(0) + " " + _scriptureText.DisplayText();
+        string scripture = _reference.GetReference() + ". " + _scriptureText.DisplayText();
         return scripture;
     }
 

@@ -11,8 +11,8 @@ public class Word
 
     public Word()
     {
-        // _word.Add("word");
-        // _state.Add(true);
+        _word.Add("word");
+        _state.Add(true);
     }
     public Word(string text)
     {
@@ -39,7 +39,7 @@ public class Word
         foreach (string word in _word)
         {
             // Console.WriteLine($"- {word}");
-            texto = texto + word + ".";
+            texto = texto + word + " ";
         }
         return texto;
     }
