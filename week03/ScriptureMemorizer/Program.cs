@@ -6,7 +6,6 @@ class Program
     {
         // Console.WriteLine("Hello World! This is the ScriptureMemorizer Project.");
         string respond = ".";
-        int index = 0;
         Console.Clear();
         Scripture scripture1 = new();
         do
