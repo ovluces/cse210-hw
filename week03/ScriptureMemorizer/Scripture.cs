@@ -79,7 +79,7 @@ public class Scripture
             do //generates random number of word until find a word to change
             {
                 Random randomGenerator = new Random();
-                int randomIndex = randomGenerator.Next(0, numberOfWords); //obtain a random index, between 0 and the count os prompts in list.
+                int randomIndex = randomGenerator.Next(0, numberOfWords); //obtain a random index, between 0 and the count of prompts in list.
                 change = _scriptureText[randomIndex].HideWord();
                 if (change)
                 {
