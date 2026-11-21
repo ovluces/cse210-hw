@@ -27,6 +27,8 @@ class Program
         Console.WriteLine($"{myOrder1.GetPackingLabel()}");
         Console.WriteLine("----------------------------------------------------------------------------------------------");
         Console.WriteLine($"Shipping Cost.: ${myOrder1.CalculateShippingCost()}");
+        double totalOrder = myOrder1.CalculateShippingCost() + myOrder1.CalculateTotal();
+        Console.WriteLine($"Total Order.: ${totalOrder.ToString("N2")}");
         Console.WriteLine("");
         Console.WriteLine("----------------------------------------------------------------------------------------------");
         Console.WriteLine("Order #2.");
@@ -46,6 +48,8 @@ class Program
         Console.WriteLine($"{myOrder2.GetPackingLabel()}");
         Console.WriteLine("----------------------------------------------------------------------------------------------");
         Console.WriteLine($"Shipping Cost.: ${myOrder2.CalculateShippingCost()}");
+        totalOrder = myOrder2.CalculateShippingCost() + myOrder2.CalculateTotal();
+        Console.WriteLine($"Total Order.: ${totalOrder.ToString("N2")}");
 
     }
 }
