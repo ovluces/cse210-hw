@@ -15,6 +15,11 @@ class Program
         ReflectingActivityPrompts.Add("Think of a time when you did something really difficult.");
         ReflectingActivityPrompts.Add("Think of a time when you helped someone in need.");
         ReflectingActivityPrompts.Add("Think of a time when you did something truly selfless.");
+        ReflectingActivityPrompts.Add("Think of a time when you share your testimony.");
+        ReflectingActivityPrompts.Add("Think of a time when you go to the temple.");
+        ReflectingActivityPrompts.Add("Think of a time when you did some vicarious work.");
+        ReflectingActivityPrompts.Add("Think of a time when you show love for a member of your family.");
+        ReflectingActivityPrompts.Add("Think of a time when you give a talk in sacrament meeting.");
 
 
         List<string> ReflectingActivityQuestions = new();
@@ -34,6 +39,7 @@ class Program
         listingActivityPrompts.Add("Who are people that you have helped this week?");
         listingActivityPrompts.Add("When have you felt the Holy Ghost this month?");
         listingActivityPrompts.Add("Who are some of your personal heroes?");
+        listingActivityPrompts.Add("What are some of your favorite scriptures?");
 
         //menu
         string respond = "";
