@@ -5,7 +5,7 @@ class Program
         // Console.WriteLine("Hello World! This is the Mindfulness Project.");
 
         //Showing Creativity and Exceeding Requirements
-        // Make sure no random questions are selected until they have all been used at least once in that session.
+        // Make sure no random questions are duplicated in one session of reflecting activity.
 
         //Data for the Activities
 
